@@ -29,12 +29,12 @@ func NewGenShin(cookie string) *GenShin {
 }
 
 // Sign 签到
-func (gs *GenShin) Sign() error {
+func (gs *GenShin) Sign(uid string) error {
 	url := "https://api-takumi.mihoyo.com/event/bbs_sign_reward/sign"
 	requestJson := map[string]interface{}{
 		"act_id": ActId,
 		"region": "cn_gf01",
-		"uid":    "105770153",
+		"uid":    uid,
 	}
 	b, err := json.Marshal(requestJson)
 	if err != nil {

@@ -30,7 +30,7 @@ func runSign(job *cron.Cron) error {
 				logx.Infof("uid [%s] 已经签到过了", a.Uid)
 				continue
 			}
-			if err := api.Sign(); err != nil {
+			if err := api.Sign(a.Uid); err != nil {
 				logx.Errorf("sign [%s] got error %s", a.Uid, err.Error())
 				return
 			}

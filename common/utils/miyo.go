@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func getDeviceId(l int) string {
+func GetDeviceId(l int) string {
 	str := "123456789ABCDEFGHIJKLMNPQRSTUVWXYZ"
 	b := []byte(str)
 	var result []byte
@@ -23,7 +23,7 @@ func getDeviceId(l int) string {
 	if ok1 && ok2 {
 		return string(result)
 	} else {
-		return getDeviceId(l)
+		return GetDeviceId(l)
 	}
 }
 
@@ -41,7 +41,7 @@ func getDsRandStr(l int) string {
 	if ok1 && ok2 {
 		return string(result)
 	} else {
-		return getDeviceId(l)
+		return GetDeviceId(l)
 	}
 }
 

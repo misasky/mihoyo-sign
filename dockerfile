@@ -12,18 +12,18 @@ ADD go.mod .
 ADD go.sum .
 RUN go mod download
 COPY . .
-RUN go build -ldflags="-s -w" -o /app/api api.go
+RUN go build -ldflags="-s -w" -o /app/api ./app/app.go
 
 
-FROM harbor.zhigui.com/dna/alpine-envsubst:latest
+FROM alpine
 
 RUN mkdir -p /app/etc
 ENV TZ Asia/Shanghai
 
 WORKDIR /app
 COPY --from=builder /app/api /app/api
-COPY etc/app.yaml /app/etc/api.yaml
-COPY account.json /app/account.json
+COPY /app/etc/app.yaml /app/etc/app.yaml
+COPY /app/account.json /app/account.json
 
 
 EXPOSE 8888
